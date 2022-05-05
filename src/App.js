@@ -170,7 +170,7 @@ function App() {
         Mint
       </button>
       {accounts[0] === "0x140d60630458Ab27E603fD96823a98bA96dF08ff" ||
-      accounts[0] === "0xFeBb320dBbB72949867476048e7c17BB77730D74" ? (
+      accounts[0] === "0xE835C30a34d6F8ab0F6E57FFB3690A8345D33170" ? (
         <>
           <button onClick={_activateMinting}>Activate minting</button>
           <button onClick={_reveal}>Reveal Tokens</button>
@@ -182,7 +182,7 @@ function App() {
       {instance
         ? tokensArray.map((token, index) => {
             return (
-              <div>
+              <div key={index}>
                 <img
                   src={"https://ipfs.io/ipfs/" + token.image.slice(7) + ".png"}
                   alt="tokenImage"

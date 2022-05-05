@@ -35,7 +35,10 @@ contract DemonEyes is ERC721Enumerable, Ownable {
     function mint(uint256 _mintAmount) public payable {
         require(isActive, "Mint is not activate");
         require(_mintAmount > 0, "Not enough amount");
-        require(_mintAmount <= MAX_MINT_AMOUNT, "You can mint only two token per wallet");
+        require(
+            _mintAmount <= MAX_MINT_AMOUNT,
+            "You can mint only two token per wallet"
+        );
         require(
             totalSupply().add(_mintAmount) <= MAX_SUPPLY,
             "All tokens have been minted"
@@ -49,7 +52,7 @@ contract DemonEyes is ERC721Enumerable, Ownable {
         }
 
         for (uint256 i = 0; i < _mintAmount; i++) {
-            uint256 tokenId =  totalSupply().add(1);
+            uint256 tokenId = totalSupply().add(1);
             _safeMint(msg.sender, tokenId);
         }
     }
