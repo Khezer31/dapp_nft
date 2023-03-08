@@ -4,3 +4,5 @@ build
 Dockerfile
 Dockerfile.prod
 .git
+**/node_modules
+**/npm-debug.log

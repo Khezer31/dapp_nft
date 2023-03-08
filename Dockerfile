@@ -1,22 +1,21 @@
-# pull official base image
-FROM node:14.17.6-alpine
+# Dockerfile for React client
 
-# set working directory
+# Build react client
+FROM node:14-alpine
+
+# Working directory be app
 WORKDIR /app
 
-# add `/app/node_modules/.bin` to $PATH
-# ENV PATH /app/node_modules/.bin:$PATH
+COPY package*.json ./
 
-# install app dependencies
-COPY package.json ./
-COPY yarn.lock ./
+###  Installing dependencies
 
-RUN yarn install --silent
-# RUN yarn global add react-scripts@3.4.1 --silent
+RUN npm install
 
-# add app
+# copy local files to app folder
 COPY . /app
 
 EXPOSE 3000
-# start app
-CMD ["yarn", "start"]
+# ENV CHOKIDAR_USEPOLLING=true
+
+CMD ["yarn","start"]
